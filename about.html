@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - Ramya R Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #1e40af;
+      --accent-color: #2563eb;
+      --text-color: #374151;
+      --text-muted: #4b5563;
+      --background-color: #f9fafb;
+      --card-background: #ffffff;
+      --shadow-color: rgba(0,0,0,0.1);
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #1b3aab;
+      outline: none;
+    }
+    .container {
+      max-width: 900px;
+      width: 90%;
+      margin: 3rem auto 4rem;
+      flex-grow: 1;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--card-background);
+      box-shadow: 0 2px 8px var(--shadow-color);
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--primary-color);
+      letter-spacing: 0.07em;
+      cursor: default;
+      user-select: none;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--accent-color);
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background-color: var(--accent-color);
+      color: white;
+      box-shadow: 0 2px 8px var(--shadow-color);
+    }
+    nav a .material-icons {
+      font-size: 20px;
+      color: inherit;
+    }
+    /* mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .hamburger div {
+      width: 26px;
+      height: 3px;
+      background: var(--accent-color);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--card-background);
+      flex-direction: column;
+      padding: 2rem 2rem;
+      gap: 1.5rem;
+      z-index: 1100;
+      overflow-y: auto;
+    }
+    .mobile-nav.show {
+      display: flex;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .mobile-nav a {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .mobile-nav a[aria-current="page"] {
+      font-weight: 900;
+      text-decoration: underline;
+    }
+    .mobile-nav a .material-icons {
+      font-size: 24px;
+      color: var(--accent-color);
+    }
+    /* About content styles */
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      text-align: center;
+    }
+    .profile-container {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    .profile-image {
+      flex: 0 0 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 8px 20px var(--shadow-color);
+      border: 5px solid var(--accent-color);
+      transition: transform 0.3s ease;
+    }
+    .profile-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .profile-image:hover {
+      transform: scale(1.05);
+    }
+    .intro-text {
+      flex: 1 1 360px;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 480px;
+    }
+    section {
+      margin-bottom: 3.5rem;
+    }
+    section h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--accent-color);
+      border-left: 5px solid var(--accent-color);
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    section h2 .material-icons {
+      font-size: 28px;
+      color: var(--primary-color);
+    }
+    ul {
+      margin-left: 1.25rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+      list-style-type: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 1.25rem;
+    }
+    ul li .item-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+    ul li .material-icons {
+      color: var(--accent-color);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    ul li .item-details {
+      margin-left: 24px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.875rem;
+      padding: 1rem 1rem;
+      background: var(--card-background);
+      color: var(--text-muted);
+      box-shadow: 0 -1px 6px var(--shadow-color);
+    }
+    /* Responsive */
+    @media (max-width: 767px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .profile-container {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .profile-image {
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 2.8rem;
+      }
+      section h2 {
+        font-size: 1.8rem;
+      }
+      ul li {
+        margin-bottom: 1.5rem;
+      }
+    }
+    @media (min-width: 768px) {
+      .mobile-nav {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo" tabindex="0">Ramya R</div>
+      <nav aria-label="Primary navigation">
+        <a href="about.html" aria-current="page"><span class="material-icons" aria-hidden="true">person</span>About</a>
+        <a href="skills.html"><span class="material-icons" aria-hidden="true">build</span>Skills</a>
+         <a href="projects.html"><span class="material-icons" aria-hidden="true">work</span>Projects</a>
+        <a href="contact.html"><span class="material-icons" aria-hidden="true">mail</span>Contact</a>
+      </nav>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+        <div></div><div></div><div></div>
+      </button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile Primary navigation">
+      <a href="about.html" aria-current="page"><span class="material-icons" aria-hidden="true">person</span>About</a>
+      <a href="skills.html"><span class="material-icons" aria-hidden="true">build</span>Skills</a>
+      <a href="projects.html"><span class="material-icons" aria-hidden="true">work</span>Projects</a>
+      <a href="contact.html"><span class="material-icons" aria-hidden="true">mail</span>Contact</a>
+    </nav>
+  </header>
+  <main class="container" tabindex="0">
+    <h1>About Me</h1>
+    <div class="profile-container">
+      <div class="profile-image" aria-label="Profile picture of Ramya R">
+        <img src="myphoto.jpg" alt="Portrait photo of Ramya R" />
+      </div>
+      <p class="intro-text">I am a motivated and detail-oriented Software Engineer seeking to apply my technical skills in software development, problem-solving, and innovation to contribute to a dynamic team and grow professionally.</p>
+    </div>
+    <section aria-labelledby="education-heading">
+      <h2 id="education-heading"><span class="material-icons" aria-hidden="true">school</span>Education</h2>
+      <ul>
+        <li>
+          <div class="item-header">
+            <span class="material-icons">school</span>
+            Kongunadu College of Engineering and Technology, Trichy
+          </div>
+          <div class="item-details">(2022 - 2026) - Computer Science and Engineering, CGPA: 8.21 (5th Semester)</div>
+        </li>
+        <li>
+          <div class="item-header">
+            <span class="material-icons">account_balance</span>
+            Swamy Vivekananda Matric Hr Sec School, Perambalur
+          </div>
+          <div class="item-details">(2021 - 2022) - HSS, Percentage: 91.7%</div>
+        </li>
+        <li>
+          <div class="item-header">
+            <span class="material-icons">account_balance</span>
+            Swamy Vivekananda Matric Hr Sec School, Perambalur
+          </div>
+          <div class="item-details">(2019 - 2020) - SSLC, Percentage: 97.6%</div>
+        </li>
+      </ul>
+    </section>
+    <section aria-labelledby="personal-heading">
+      <h2 id="personal-heading"><span class="material-icons" aria-hidden="true">badge</span>Personal Details</h2>
+      <ul>
+        <li><strong>Date of Birth:</strong> 13/06/2005</li>
+        <li><strong>Gender:</strong> Female</li>
+        <li><strong>Nationality:</strong> Indian</li>
+        <li><strong>Location:</strong> Perambalur, Tamil Nadu</li>
+        <li><strong>Hobbies:</strong> Drawing, Travelling</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 Ramya R Portfolio
+  </footer>
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+      hamburger.setAttribute('aria-expanded', !expanded);
+      mobileNav.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>

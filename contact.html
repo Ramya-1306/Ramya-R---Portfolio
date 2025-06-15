@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Ramya R Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #1e40af;
+      --accent-color: #2563eb;
+      --text-color: #374151;
+      --text-muted: #4b5563;
+      --background-color: #f9fafb;
+      --card-background: #ffffff;
+      --shadow-color: rgba(0,0,0,0.1);
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #1b3aab;
+      outline: none;
+    }
+    .container {
+      max-width: 900px;
+      width: 90%;
+      margin: 3rem auto 4rem;
+      flex-grow: 1;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--card-background);
+      box-shadow: 0 2px 8px var(--shadow-color);
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--primary-color);
+      letter-spacing: 0.07em;
+      cursor: default;
+      user-select: none;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--accent-color);
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background-color: var(--accent-color);
+      color: white;
+      box-shadow: 0 2px 8px var(--shadow-color);
+    }
+    nav a .material-icons {
+      font-size: 20px;
+      color: inherit;
+    }
+    /* mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .hamburger div {
+      width: 26px;
+      height: 3px;
+      background: var(--accent-color);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--card-background);
+      flex-direction: column;
+      padding: 2rem 2rem;
+      gap: 1.5rem;
+      z-index: 1100;
+      overflow-y: auto;
+    }
+    .mobile-nav.show {
+      display: flex;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .mobile-nav a {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .mobile-nav a[aria-current="page"] {
+      font-weight: 900;
+      text-decoration: underline;
+    }
+    .mobile-nav a .material-icons {
+      font-size: 24px;
+      color: var(--accent-color);
+    }
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      text-align: center;
+    }
+    .card {
+      background: var(--card-background);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px var(--shadow-color);
+      padding: 2rem 2.5rem;
+      margin-bottom: 3rem;
+      border-left: 6px solid var(--accent-color);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 10px 40px rgba(37, 99, 235, 0.3);
+    }
+    .card h2 {
+      font-size: 2rem;
+      color: var(--accent-color);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card h2 .material-icons {
+      font-size: 32px;
+      color: var(--primary-color);
+    }
+    ul {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin-bottom: 1.1rem;
+      line-height: 1.5;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.875rem;
+      padding: 1rem 1rem;
+      background: var(--card-background);
+      color: var(--text-muted);
+      box-shadow: 0 -1px 6px var(--shadow-color);
+    }
+    @media (max-width: 767px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      h1 {
+        font-size: 2.8rem;
+      }
+      .card h2 {
+        font-size: 1.6rem;
+      }
+    }
+    @media (min-width: 768px) {
+      .mobile-nav {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo" tabindex="0">Ramya R</div>
+      <nav aria-label="Primary navigation">
+        <a href="about.html"><span class="material-icons">person</span>About</a>
+        <a href="skills.html"><span class="material-icons">build</span>Skills</a>
+         <a href="projects.html"><span class="material-icons">work</span>Projects</a>
+        <a href="contact.html" aria-current="page"><span class="material-icons">mail</span>Contact</a>
+      </nav>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+        <div></div><div></div><div></div>
+      </button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile Primary navigation">
+      <a href="about.html"><span class="material-icons">person</span>About</a>
+      <a href="skills.html"><span class="material-icons">build</span>Skills</a>
+      <a href="projects.html"><span class="material-icons">work</span>Projects</a>
+      <a href="contact.html" aria-current="page"><span class="material-icons">mail</span>Contact</a>
+    </nav>
+  </header>
+  <main class="container" tabindex="0">
+    <h1>Contact Me</h1>
+    <section class="card" aria-labelledby="contact-info">
+      <h2 id="contact-info"><span class="material-icons">contact_page</span>Contact Information</h2>
+      <ul>
+        <li><strong>Phone:</strong> <a href="tel:+918220016327">8220016327</a></li>
+        <li><strong>Email:</strong> <a href="mailto:ramyarajendhran13@gmail.com">ramyarajendhran13@gmail.com</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ramya-r-05272a30a/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ramya-r-05272a30a/</a></li>
+        <li><strong>Location:</strong> Perambalur, Tamil Nadu, India</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 Ramya R Portfolio
+  </footer>
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+      hamburger.setAttribute('aria-expanded', !expanded);
+      mobileNav.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
